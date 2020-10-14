@@ -1,0 +1,95 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Checkout</h1>
+  <div>
+
+  </div>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Basket</mat-card-title>
+      <mat-card-subtitle>total € {{cartValue/100}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <input type="text" class="form-control" id="cartValue" [(ngModel)]="cartValue" name="cartValue">
+      <button (click)="loadAdyenConfig()" type="button" name="button">Update cart value</button>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Shipping details</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Company</mat-label>
+          <input matInput value="Adyen">
+        </mat-form-field>
+
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <mat-label>First name</mat-label>
+                <input matInput>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width">
+                <mat-label>Last Name</mat-label>
+                <input matInput>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+
+        <p>
+          <mat-form-field class="example-full-width">
+            <mat-label>Address</mat-label>
+            <textarea matInput placeholder="Ex. 100 Main St"></textarea>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Address 2</mat-label>
+            <textarea matInput></textarea>
+          </mat-form-field>
+        </p>
+
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <mat-label>City</mat-label>
+                <input matInput placeholder="Ex. San Francisco">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width">
+                <mat-label>State</mat-label>
+                <input matInput placeholder="Ex. California">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width">
+                <mat-label>Postal Code</mat-label>
+                <input matInput #postalCode maxlength="5" placeholder="Ex. 94105">
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+      </form>
+
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="startPayment()" mat-button>Go to Payment</button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Payment</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <h3 *ngIf="errorMsg" style="color:red; text-align: center">{{errorMsg}}</h3>
+      <div id="dropin-container"></div>
+
+    </mat-card-content>
+  </mat-card>
+</div>
